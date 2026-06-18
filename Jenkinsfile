@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     AWS_REGION = 'us-east-1'
 }
@@ -75,6 +74,5 @@ post {
         cleanWs()
     }
 }
-```
 
 }
