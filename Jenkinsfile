@@ -16,7 +16,7 @@ stages {
 
     stage('Terraform Init') {
         steps {
-            withAWS(credentials: 'aws-cred', region: "${AWS_REGION}") {
+            withAWS(credentials: 'aws-cred-ravi', region: "${AWS_REGION}") {
                 sh 'terraform init'
             }
         }
@@ -24,7 +24,7 @@ stages {
 
     stage('Terraform Validate') {
         steps {
-            withAWS(credentials: 'aws-cred', region: "${AWS_REGION}") {
+            withAWS(credentials: 'aws-cred-ravi', region: "${AWS_REGION}") {
                 sh 'terraform validate'
             }
         }
@@ -32,7 +32,7 @@ stages {
 
     stage('Terraform Apply') {
         steps {
-            withAWS(credentials: 'aws-cred', region: "${AWS_REGION}") {
+            withAWS(credentials: 'aws-cred-ravi', region: "${AWS_REGION}") {
                 sh 'terraform apply -auto-approve'
             }
         }
@@ -40,7 +40,7 @@ stages {
 
     stage('Upload Website Files to S3') {
         steps {
-            withAWS(credentials: 'aws-cred', region: "${AWS_REGION}") {
+            withAWS(credentials: 'aws-cred-ravi', region: "${AWS_REGION}") {
                 sh '''
                     BUCKET_NAME=$(terraform output -raw name | cut -d'.' -f1)
 
